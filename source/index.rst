@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 系统程序员成长计划
-==========================================
+==========================
 
 .. toctree::
    :maxdepth: 2

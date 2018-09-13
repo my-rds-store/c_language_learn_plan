@@ -6,6 +6,8 @@
 系统程序员成长计划
 ==========================
 
+|today|
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

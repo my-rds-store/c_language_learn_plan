@@ -13,6 +13,7 @@
    :caption: Contents:
 
    07/index
+   08/index
 
 Indices and tables
 ==================

@@ -12,6 +12,7 @@
    :maxdepth: 2
    :caption: Contents:
 
+   04/index
    05/index
    06/index
    07/index

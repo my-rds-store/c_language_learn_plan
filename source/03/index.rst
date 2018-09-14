@@ -44,14 +44,14 @@
 3.3. 有序数组的两个应用   
 ========================
 
+.. literalinclude:: ../../code/3/3/sort_app/typedef.h
+    :language: c
+    :encoding: utf-8
+
 .. literalinclude:: ../../code/3/3/sort_app/search.c
     :language: c
     :encoding: utf-8
 
-
-.. literalinclude:: ../../code/3/3/sort_app/typedef.h
-    :language: c
-    :encoding: utf-8
 
 .. literalinclude:: ../../code/3/3/sort_app/sort.h
     :language: c

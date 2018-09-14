@@ -6,6 +6,11 @@
 2.3 避免常见错误 
 =================
 
+* strcpy , strcat, sprintf, 与 strncpy , strncat, snprintf,
+
+* sizeoff
+
+* valotile
 
 * intptr_t, uintptr_t
 

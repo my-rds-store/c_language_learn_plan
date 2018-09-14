@@ -21,6 +21,12 @@
    07/index
    08/index
 
+* `HowTo Compile a 32-bit Application Using gcc On the 64-bit Linux Version <https://www.cyberciti.biz/tips/compile-32bit-application-using-gcc-64-bit-linux.html>`_
+
+    .. code-block:: sh
+
+        sudo apt-get install -y g++-multilib libc6-dev-i386
+
 Indices and tables
 ==================
 

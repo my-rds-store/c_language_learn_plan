@@ -70,7 +70,7 @@
 
 
 .. literalinclude:: ../../code/2/4/autotest/Makefile
-    :language: c
+    :language: Makefile
     :encoding: utf-8
 
 

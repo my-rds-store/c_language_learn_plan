@@ -54,20 +54,19 @@
 .. literalinclude:: ../../code/4/3/locker_nest/locker_pthread.c
     :language: c
     :encoding: utf-8
-
-.. literalinclude:: ../../code/4/3/locker_nest/dlist.h
-    :language: c
-    :encoding: utf-8
-
-.. literalinclude:: ../../code/4/3/locker_nest/dlist.c
-    :language: c
-    :encoding: utf-8
-
 .. literalinclude:: ../../code/4/3/locker_nest/locker_nest.h
     :language: c
     :encoding: utf-8
 
 .. literalinclude:: ../../code/4/3/locker_nest/locker_nest.c
+    :language: c
+    :encoding: utf-8
+ 
+.. literalinclude:: ../../code/4/3/locker_nest/dlist.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/3/locker_nest/dlist.c
     :language: c
     :encoding: utf-8
 

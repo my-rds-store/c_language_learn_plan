@@ -120,3 +120,42 @@
     :language: Makefile
     :encoding: utf-8
 
+4.5 无锁数据结构  
+====================
+
+.. literalinclude:: ../../code/4/5/lock_free/typedef.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/5/lock_free/fifo_ring.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/5/lock_free/dlist.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/5/lock_free/swmr_dlist.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/5/lock_free/iatomic.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/4/5/lock_free/atomic.c
+    :language: c
+    :encoding: utf-8
+
+
+
+
+
+
+.. literalinclude:: ../../code/4/5/lock_free/Makefile
+    :language: Makefile
+    :encoding: utf-8
+
+
+
+

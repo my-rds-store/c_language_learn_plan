@@ -102,6 +102,27 @@
     :language: c
     :encoding: utf-8
 
+
+.. literalinclude:: ../../code/6/2/iterator/iterator.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/2/iterator/dlist_iterator.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/2/iterator/dlist_iterator.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/2/iterator/darray_iterator.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/2/iterator/darray_iterator.c
+    :language: c
+    :encoding: utf-8
+
 .. literalinclude:: ../../code/6/2/iterator/invert.c
     :language: c
     :encoding: utf-8
@@ -109,5 +130,33 @@
 .. literalinclude:: ../../code/6/2/iterator/Makefile
     :language: Makefile
     :encoding: utf-8
+
+6.3 动态绑定  
+=============
+
+.. literalinclude:: ../../code/6/3/runtime/call_cos.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/3/runtime/module.h
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/3/runtime/module_linux.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/3/runtime/module_test.c
+    :language: c
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/6/3/runtime/Makefile
+    :language: Makefile
+    :encoding: utf-8
+
+
+
+
+
 
 

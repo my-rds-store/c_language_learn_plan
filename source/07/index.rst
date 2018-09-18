@@ -60,7 +60,7 @@
 
 .. code-block:: bash
 
-    $ auttoscan
+    $ autoscan
 
 在helloworld下运行 **auttoscan** 生成文件 configure.scan, 
 
@@ -184,6 +184,11 @@ configure 有以下两个常用的参数。
  
 **configure.ac**
 
+.. code-block:: sh
+
+    $ autoscan
+    $ mv configure.scan configure.ac 
+
 .. literalinclude:: ../../code/7/2/base/configure.ac
     :encoding: utf-8
 
@@ -198,11 +203,49 @@ configure 有以下两个常用的参数。
  
     # show info
     # apt-get install -y pkg-config
-    export PKG_CONFIG_PATH=/tmp/usr/
+    export PKG_CONFIG_PATH=/tmp/usr/lib/pkgconfig
     pkg-config --list-all
     pkg-config --cflags --libs base
 
 ************************
 7.3  应用程序
 ************************
+
+::
+
+    └── appdemo
+        ├── AUTHORS
+        ├── ChangeLog
+        ├── Makefile.am
+        ├── NEWS
+        ├── README
+        ├── autogen.sh
+        ├── configure.ac
+        └── src
+            ├── Makefile.am
+            └── main.c
+
+
+**Makefile.am**
+
+.. literalinclude:: ../../code/7/3/appdemo/Makefile.am
+    :encoding: utf-8
+
+**src/Makefile.am**
+
+.. literalinclude:: ../../code/7/3/appdemo/src/Makefile.am
+    :encoding: utf-8
+
+.. literalinclude:: ../../code/7/3/appdemo/configure.ac
+    :encoding: utf-8
+
+.. code-block:: sh
+
+    # autogen
+    $ autoreconf --install
+
+    # build
+    $ export PKG_CONFIG_PATH=/tmp/usr/lib/pkgconfig
+    $ ./configure --prefix=/tmp/usr
+    $ make && make install
 

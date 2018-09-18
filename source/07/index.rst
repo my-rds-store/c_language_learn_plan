@@ -114,7 +114,7 @@ configure 有以下两个常用的参数。
             ./configure --prefix=/home/jxm/work/arm-root/usr/ --host=arm-linux
 
 
-7) 编译,安装
+7) 编译与安装
 =====================================
 
 .. code-block:: bash
@@ -166,6 +166,8 @@ configure 有以下两个常用的参数。
             ├── test_helper.c
             └── typedef.h
 
+1）创建工程   
+===============
 
 **Makefile.am**
 
@@ -192,6 +194,9 @@ configure 有以下两个常用的参数。
 .. literalinclude:: ../../code/7/2/base/configure.ac
     :encoding: utf-8
 
+2）编译与安装   
+===============
+
 .. code-block:: sh
     
     # autogen
@@ -200,7 +205,13 @@ configure 有以下两个常用的参数。
     # build
     ./configure --prefix=/tmp/usr 
     make && make install 
- 
+
+3）pkg-config 简单使用     
+============================
+
+
+.. code-block:: sh
+
     # show info
     # apt-get install -y pkg-config
     export PKG_CONFIG_PATH=/tmp/usr/lib/pkgconfig
@@ -225,6 +236,8 @@ configure 有以下两个常用的参数。
             ├── Makefile.am
             └── main.c
 
+1) 创建工程 
+=============
 
 **Makefile.am**
 
@@ -239,6 +252,10 @@ configure 有以下两个常用的参数。
 .. literalinclude:: ../../code/7/3/appdemo/configure.ac
     :encoding: utf-8
 
+
+2) 编译与安装
+===================
+
 .. code-block:: sh
 
     # autogen
@@ -249,3 +266,10 @@ configure 有以下两个常用的参数。
     $ ./configure --prefix=/tmp/usr
     $ make && make install
 
+3) 发布软件
+============
+
+.. code-block:: sh
+
+    # 发布软件包
+    $ make dist  # 或者 make distcheck

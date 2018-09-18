@@ -2,12 +2,26 @@
 第七章 工程管理
 ###############
 
+************************************************************************************************************
+`automake 官方手册 <https://www.gnu.org/software/automake/manual/automake.html#Introduction>`_
+************************************************************************************************************
 
+* `A Small Hello World <https://www.gnu.org/software/automake/manual/automake.html#Hello-World>`_
+* `使用autotools生成Makefile学习笔记 <https://geesun.github.io/posts/2015/02/autotool.html>`_
+
+
+************************
 7.1  Hello World
-================
+************************
 
-目录结构
---------
+* 参考
+    * `例解 autoconf 和 automake 生成 Makefile 文件 <https://www.ibm.com/developerworks/cn/linux/l-makefile/>`_
+    * `Autotools常见的工具包autoconf、automake、libtool 介绍 <https://www.zhihu.com/question/22644913>`_
+    * `autoconf与automake加入新的编译选项 <https://segmentfault.com/a/1190000012798205>`_
+
+
+1) 目录结构
+====================
 
 :: 
 
@@ -20,55 +34,48 @@
                  |--- main.c
 
 
-创建源文件mian.c
------------------
+2)  `helloworld/main.c`
+========================================
 
-`helloworld/main.c`
-
-.. literalinclude:: ../../code/helloworld/src/main.c
+.. literalinclude:: ../../code/7/1/helloworld/src/main.c
     :language: c
     :encoding: utf-8
 
+3) 创建Makefile模板 
+========================================
 
-创建Makefile模板 
-------------------
+**Makefile.am**
 
-`helloworld/Makefile.am`
-
-.. literalinclude:: ../../code/helloworld/Makefile.am
+.. literalinclude:: ../../code/7/1/helloworld/Makefile.am
     :encoding: utf-8
 
-src表示一个子目录，如果有多个子目录，用空格分开。
- 
+**src/Makefile.am**
 
-`helloworld/src/Makefile.am`
-
-.. literalinclude:: ../../code/helloworld/src/Makefile.am
+.. literalinclude:: ../../code/7/1/helloworld/src/Makefile.am
     :encoding: utf-8
 
-PROGRAMS表示要产生的可执行文件,有多个可执行文件用空格分开，
-而bin表示可执行文件的安装路径。
-SOURCE表示生成可执行文件需要的源文件,有多个源文件用空格分开。
 
-创建autoconf的模板
-------------------
+4) 创建autoconf的模板
+========================================
 
 .. code-block:: bash
 
     $ auttoscan
 
-
 在helloworld下运行 **auttoscan** 生成文件 configure.scan, 
-改名为 configure.ac
 
-
-.. literalinclude:: ../../code/helloworld/configure.scan
+.. literalinclude:: ../../code/7/1/helloworld/configure.scan
     :encoding: utf-8
 
+改名为 `configure.ac`
 
-并做修改
+.. code-block:: bash
 
-.. literalinclude:: ../../code/helloworld/configure.ac
+    $ mv configure.scan  configure.scan
+
+修改 `configure.ac`
+
+.. literalinclude:: ../../code/7/1/helloworld/configure.ac
     :encoding: utf-8
     :emphasize-lines: 5, 8
 
@@ -78,76 +85,17 @@ configure.ac 是由一系列的宏组成,这些宏最终有命令m4展开，得�
 **AC_CONFIG_FILES** 和 **AC_OUTPUT** 是用来产生Makefile和其他数据文件的.
 
 
-复制所用到的宏
---------------
+5) 生成configure脚本
+========================================
 
 .. code-block:: bash
 
-    $ aclocal
+    $ touch README
+    $ autoreconf --install
 
 
-AC_PROG_CC 之类的宏是标准的的宏(或者说是内置的宏),不需要我们自己去写它，但我们需要
-通过 **aclocal** 把configure.ac 中所有的宏全部复制到我们的工程里来。在helloworld目录下
-运行 **aclocal** 之后,当前目录下出现了以下内容.
-
-* autom4te.cache : 临时目录，只是用来加速宏展开
-* aclocal.m4     : 这是configure.ac中用到的宏的定义，有兴趣的读者可以看看。
-
-
-生成配置头文件模块
-------------------
-
-.. code-block:: bash
-
- $ autoheader
-
-
-配置文件(config.h)是用来定义在 C/C++ 程序中可以引用到的宏，像模块名称和版本号等等.
-这些宏由configure脚本产生，但我们要提供一个模板文件。
-这个模板文件可以用命令autoheader产生出来。
-在helloworld目录下运行autoheader之后,当前目录下产生config.h.in, 一般情况下不去修改它.
-
-
-创建几个必要的文件
-------------------
-
-* README : 描述模块的功能、用法和注意事项
-* NEWS   : 描述模块最新的动态
-* AUTHORS: 模块的作者及联系方式
-* ChangeLog : 记录模块的修改历史，他有固定的格式。
-
-    * 1) 最新修改放在最上面。
-    * 2）对于每一条记录，第一行写日期，修改者和联系方式。第二行开始以tab开头(缩进),再加一个星号，后面再写修改的原因和位置等。如
-
-     ::
-
-        2009-03-29 Li XianJing
-            * Created
-
-生成Makefile.in和所需要的脚本
------------------------------
-
-.. code-block:: bash
-
-    $ automake -a   
-    # or
-    $ automake --add-missing
-
-这个命令会建立 COPYING depcomp INSTALL install-sh missing 几个文件的链接，这些文件指向系统中的文件。
-
-automake 最重要的功能是以Makefile.am 为模板产生Makefile.in文件,Makefile.in相对于Makefile.am要复杂很多倍了,所幸的是我们不需要了解它。
-
-生成configure脚本
------------------
-
-.. code-block:: bash
-
-    $ autoconf
-    
-autoconf的功能是调用m4展开configure.ac中的宏,生成configure脚本,这个脚本是最终执行的脚本.
-
-生成最终的Makefile
-------------------
+6) 生成最终的Makefile
+=====================================
 
 .. code-block:: bash
 
@@ -155,33 +103,103 @@ autoconf的功能是调用m4展开configure.ac中的宏,生成configure脚本,�
 
 configure 有以下两个常用的参数。
 
-* ---prefix :  用来制定安装目录，linux默认安装目录是 `/usr/local`
 
-* ---host :  用于交叉编译，比如x86的PC机上编译在ARM板上运行的程序.
+    ::
 
- ::
+        --prefix : 用来制定安装目录，linux默认安装目录是 /usr/local
 
-    ./configure --prefix=/home/jxm/work/arm-root/usr/ --host=arm-linux
+        --host   : 用于交叉编译，比如x86的PC机上编译在ARM板上运行的程序.
+
+        eg:
+            ./configure --prefix=/home/jxm/work/arm-root/usr/ --host=arm-linux
 
 
-编译
-----
-
-.. code-block:: bash
-
-    $ make -j4
-
-安装
-----
+7) 编译,安装
+=====================================
 
 .. code-block:: bash
 
-   $ make install
+    $ make -j4 && make install 
 
+************
 7.2  函数库
-================
+************
 
+:: 
+
+    └── base
+        ├── AUTHORS
+        ├── ChangeLog
+        ├── Makefile.am
+        ├── NEWS
+        ├── README
+        ├── autogen.sh
+        ├── base.pc.in
+        ├── configure.ac
+        └── src
+            ├── Makefile.am
+            ├── darray.c
+            ├── darray.h
+            ├── darray_iterator.c
+            ├── darray_iterator.h
+            ├── dlist.c
+            ├── dlist.h
+            ├── dlist_iterator.c
+            ├── dlist_iterator.h
+            ├── hash_table.c
+            ├── hash_table.h
+            ├── invert.c
+            ├── invert_ng.c
+            ├── iterator.h
+            ├── linear_container.h
+            ├── linear_container_darray.c
+            ├── linear_container_darray.h
+            ├── linear_container_dlist.c
+            ├── linear_container_dlist.h
+            ├── linear_container_test.c
+            ├── queue.c
+            ├── queue.h
+            ├── sort.c
+            ├── sort.h
+            ├── stack.c
+            ├── stack.h
+            ├── test_helper.c
+            └── typedef.h
+
+
+**Makefile.am**
+
+.. literalinclude:: ../../code/7/2/base/Makefile.am
+    :encoding: utf-8
+
+**src/Makefile.am**
+
+.. literalinclude:: ../../code/7/2/base/src/Makefile.am
+    :encoding: utf-8
+
+
+**base.pc.in**
+
+.. literalinclude:: ../../code/7/2/base/base.pc.in
+    :encoding: utf-8
+
+ 
+.. code-block:: sh
+    
+    # autogen
+    autoreconf --install
+
+    # build
+    ./configure --prefix=/tmp/usr 
+    make && make install 
+ 
+    # show info
+    # apt-get install -y pkg-config
+    export PKG_CONFIG_PATH=/tmp/usr/
+    pkg-config --list-all
+    pkg-config --cflags --libs base
+
+************************
 7.3  应用程序
-================
-
+************************
 

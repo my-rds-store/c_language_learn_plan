@@ -177,13 +177,16 @@ configure 有以下两个常用的参数。
 .. literalinclude:: ../../code/7/2/base/src/Makefile.am
     :encoding: utf-8
 
-
 **base.pc.in**
 
 .. literalinclude:: ../../code/7/2/base/base.pc.in
     :encoding: utf-8
-
  
+**configure.ac**
+
+.. literalinclude:: ../../code/7/2/base/configure.ac
+    :encoding: utf-8
+
 .. code-block:: sh
     
     # autogen

@@ -10,7 +10,7 @@
 * 让C++可以调用
 
 
-.. code-block:: c
+.. code-block:: c 
 
     # ifdef __cplusplus
     extern "C" {
@@ -97,7 +97,7 @@
 
 
 .. literalinclude:: ../../code/1/6/data_store/Makefile
-    :language: c
+    :language: makefile
     :encoding: utf-8
 
 

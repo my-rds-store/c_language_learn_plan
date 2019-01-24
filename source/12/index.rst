@@ -163,4 +163,3 @@
 
     如果你需要替换宏, 使用一个 函数和一个非函数式宏, 如 #define printf myprintf
 
-

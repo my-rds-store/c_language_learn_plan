@@ -22,6 +22,8 @@
    08/index
    09/index
    10/index
+   11/index
+   12/index
 
 * `HowTo Compile a 32-bit Application Using gcc On the 64-bit Linux Version <https://www.cyberciti.biz/tips/compile-32bit-application-using-gcc-64-bit-linux.html>`_
 

@@ -25,6 +25,11 @@
       // 这也就体现出了##对其左右部分（即左x和右4）的拼接作用，最终拼接成x4:
 
 
+.. literalinclude:: ../../code/12/main.c
+    :language: cpp
+    :encoding: utf-8
+
+
 * `C语言 ## __VA_ARGS__ 宏 <http://www.cnblogs.com/alexshi/archive/2012/03/09/2388453.html>`_
 
 ::
@@ -157,10 +162,5 @@
     最后, 你总是可以使用真实的函数, 接受明确定义的可变参数
 
     如果你需要替换宏, 使用一个 函数和一个非函数式宏, 如 #define printf myprintf
-
-
-.. literalinclude:: ../../code/12/main.c
-    :language: cpp
-    :encoding: utf-8
 
 
